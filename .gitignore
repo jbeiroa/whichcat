@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# env files
+.env
+
+# MLOps folders
+mlruns/
+.metaflow/
+
+# Data
+data/*
+!data/.gitkeep
+
+# SageMaker artifacts
+sagemaker_artifacts/
+
+# Local frames
+frames/*.jpg
