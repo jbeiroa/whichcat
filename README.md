@@ -30,6 +30,6 @@ This project follows an MLOps architecture inspired by [ml.school](https://githu
 
 ## Phases
 
-- **Phase 1:** Extract frames from SD card recordings and filter those with cats using a pre-trained model.
+- **Phase 1:** Extract frames from live feed and filter those with cats using a pre-trained model.
 - **Phase 2:** Fine-tune a PyTorch classifier to identify each specific cat and deploy to SageMaker.
 - **Phase 3:** Implement live tracking and an alarm system based on movement patterns.

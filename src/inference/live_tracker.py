@@ -3,12 +3,11 @@ import os
 import time
 import threading
 from datetime import datetime
-from src.common.config import CAMERA_IPS, CAMERA_USER, CAMERA_PASSWORD
+from src.common.config import CAMERA_IPS, get_rtsp_url
 
 def get_stream(ip, sub_stream=True):
     path = "/live/ch1" if sub_stream else "/live/ch0"
-    url = f"rtsp://{CAMERA_USER}:{CAMERA_PASSWORD}@{ip}:554{path}"
-    return url
+    return get_rtsp_url(ip, path)
 
 class VideoCaptureThread:
     """

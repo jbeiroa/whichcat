@@ -6,20 +6,24 @@ setup:
     uv run metaflow configure
 
 # Run the data collection flow
-collect-data:
-    uv run python src/data_collection/flow.py run
+collect-data *ARGS:
+    PYTHONPATH=. uv run python src/data_collection/flow.py run {{ARGS}}
 
 # Run the training flow
-train:
-    uv run python src/training/flow.py run
+train *ARGS:
+    PYTHONPATH=. uv run python src/training/flow.py run {{ARGS}}
 
 # Start the live tracking system
 track:
-    uv run python src/inference/live_tracker.py
+    PYTHONPATH=. uv run python src/inference/live_tracker.py
 
 # Open the live feed of all cameras
 live:
-    uv run python scripts/live_viewer.py
+    PYTHONPATH=. uv run python scripts/live_viewer.py
+
+# Launch the labeling UI to categorize captured frames
+label:
+    PYTHONPATH=. uv run python scripts/label_ui.py
 
 # Run tests
 test:
