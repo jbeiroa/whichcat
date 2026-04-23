@@ -71,7 +71,7 @@ class RTSPExtractor:
             enhanced = self.enhance_frame(frame)
 
             # Run inference with a lower confidence threshold for small/blurry cats
-            results = self.model(enhanced, classes=[15], conf=0.25, verbose=False)
+            results = self.model(enhanced, classes=[15], conf=0.15, verbose=False)
             
             if len(results) > 0 and len(results[0].boxes) > 0:
                 self.last_saved[ip] = current_time
