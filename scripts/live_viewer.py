@@ -112,7 +112,7 @@ def main():
                 for viewer in viewers:
                     ret, frame = viewer.read()
                     if ret:
-                        fn = f"snapshot_{viewer.name}_{ts}.jpg"
+                        fn = f"frames/snapshot_{viewer.name}_{ts}.jpg"
                         cv2.imwrite(fn, frame)
                         print(f"Saved: {fn}")
 
