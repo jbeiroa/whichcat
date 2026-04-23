@@ -32,3 +32,7 @@ test:
 # Lint the code
 lint:
     uv run ruff check .
+
+# Test RTSP streams and find working URLs with their resolutions
+test_rtsp:
+    PYTHONPATH=. uv run python scripts/test_rtsp.py

@@ -15,20 +15,19 @@ def test_url(url):
     print(f"Testing: {url}")
     cap = cv2.VideoCapture(url)
     if cap.isOpened():
+        width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+        height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
         # Try to read a frame multiple times
         for _ in range(3):
             ret, frame = cap.read()
             if ret:
-                print(f"SUCCESS: {url}")
+                print(f"SUCCESS: {url} ({int(width)}x{int(height)})")
                 cap.release()
-                return True
+                return True, int(width), int(height)
             time.sleep(0.5)
         print(f"Opened but failed to read frame: {url}")
-    else:
-        # print(f"Failed to open: {url}")
-        pass
     cap.release()
-    return False
+    return False, 0, 0
 
 ips = CAMERA_IPS
 
@@ -59,8 +58,9 @@ for ip in ips:
     for u in usernames:
         for p in paths:
             url = f"rtsp://{u}:{password}@{ip}:554{p}"
-            if test_url(url):
-                print(f"\n*** FOUND WORKING URL for {ip}: {url} ***\n")
+            success, w, h = test_url(url)
+            if success:
+                print(f"\n*** FOUND WORKING URL for {ip}: {url} [{w}x{h}] ***\n")
                 found_for_ip = True
                 found_any = True
                 break
