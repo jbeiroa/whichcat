@@ -17,7 +17,9 @@ wheels/
 
 # MLOps folders
 mlruns/
+.mlflow/
 .metaflow/
+mlflow.db
 
 # Data
 data/*

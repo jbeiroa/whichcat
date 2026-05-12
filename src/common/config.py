@@ -1,7 +1,15 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
+
+# Project Paths
+PROJECT_ROOT = Path(__file__).parent.parent.parent.absolute()
+
+# MLflow Config
+MLFLOW_TRACKING_URI = os.getenv("MLFLOW_TRACKING_URI", f"sqlite:///{PROJECT_ROOT}/mlflow.db")
+MLFLOW_ARTIFACT_ROOT = os.getenv("MLFLOW_ARTIFACT_ROOT", f"{PROJECT_ROOT}/mlruns")
 
 CAMERA_IPS = [ip.strip() for ip in os.getenv("CAMERA_IPS", "").split(",") if ip.strip()]
 _users = [u.strip() for u in os.getenv("CAMERA_USER", "admin").split(",") if u.strip()]

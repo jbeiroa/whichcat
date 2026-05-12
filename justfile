@@ -17,6 +17,12 @@ train *ARGS:
 track:
     PYTHONPATH=. uv run python src/inference/live_tracker.py
 
+# Start the MLflow UI
+mlflow:
+    uv run mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5000 & \
+    sleep 2 && \
+    open http://127.0.0.1:5000
+
 # Open the live feed of all cameras
 live:
     PYTHONPATH=. uv run python scripts/live_viewer.py
