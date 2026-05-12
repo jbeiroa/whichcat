@@ -8,6 +8,11 @@
 - **Dependency Management:** `uv` (Fast Python package installer and resolver).
 - **Automation:** `just` (Command runner).
 
+## Dependency Management
+- **Tool:** Always use `uv`. Never use `pip` directly.
+- **Commands:** Use `uv add <package>` to add dependencies and `uv run <command>` to execute scripts or tools.
+- **Verification:** Check `pyproject.toml` to verify if a package is installed.
+
 ## Project Structure
 - `src/common/`: Shared utilities, centralized configuration, and logging.
 - `src/data_collection/`: Metaflow flows and extractors for gathering frames from RTSP streams or SD card recordings.
